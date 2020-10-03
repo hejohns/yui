@@ -3,6 +3,7 @@
 #define STR_H
 
 #include <kiku/common.h>
+#include <stdio.h>
 
 /* Modeled after libc functions
  *

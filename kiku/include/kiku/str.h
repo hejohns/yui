@@ -5,10 +5,22 @@
 #include <kiku/common.h>
 #include <stdio.h>
 
-/* Modeled after libc functions
+/* Based on (and inherits quirks from) libc string functions
  *
  * Takes address of char pointer to realloc if necessary
- * Does NOT support callbacks on *alloc fails
+ * Does NOT support callbacks on *alloc fails. Immediatly calls exit()
+ *
+ * (from man 3 printf on Debian)
+ * NOTE:
+ * Some programs imprudently rely on code such as the following
+ *
+ *     sprintf(buf, "%s some further text", buf);
+ *
+ * to append text to buf.  However, the standards explicitly note that the
+ * results are undefined if source and destination  buffers  overlap  when
+ * calling  sprintf(), snprintf(), vsprintf(), and vsnprintf().  Depending
+ * on the version of gcc(1) used, and the compiler options employed, calls
+ * such as the above will not produce the expected results.
  */
 
 typedef int kiku_str_size_type;

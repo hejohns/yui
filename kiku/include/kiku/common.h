@@ -127,9 +127,9 @@ static void *kiku_malloc_c(
  * void *ptr = kiku_malloc(1);     vs     void *ptr = malloc(1);
  * kiku_free(&ptr);                       free(ptr), ptr = NULL;
  */
-static void kiku_free(void **ptr){
-    free(*ptr);
-    *ptr = NULL;
+static void kiku_free(void *ptr){
+    free(*(void **)ptr);
+    *(void **)ptr = NULL;
 }
 
 __attribute__((malloc))

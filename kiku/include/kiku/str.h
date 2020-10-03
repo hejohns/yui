@@ -83,14 +83,14 @@ static inline char *kiku_str_strcat(char **dest, const char *src){
     return *dest;
 }
 
-static inline void kiku_str_reserve(char** ptr, kiku_str_size_type size){
+static inline void kiku_str_reserve(char **ptr, kiku_str_size_type size){
     // If new capacity is greater, reallocate storage. Otherwise does nothing
     if(sizeof(kiku_str_size_type) + size + 1 > kiku_str_capacity(*ptr)){
         kiku_str_realloc(ptr, size);
     }
 }
 
-static inline void kiku_str_shrink_to_fit(char** ptr){
+static inline void kiku_str_shrink_to_fit(char **ptr){
     kiku_str_realloc(ptr, strlen(*ptr));
 }
 

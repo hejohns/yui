@@ -43,8 +43,7 @@ static inline void kiku_str_realloc(char **ptr, kiku_str_size_type size){
 }
 
 static inline char *kiku_str_init(char **ptr, kiku_str_size_type size){
-    *ptr = kiku_calloc(sizeof(kiku_str_size_type) + size + 1,
-            1);
+    *ptr = kiku_calloc(sizeof(kiku_str_size_type) + size + 1, 1);
     *(kiku_str_size_type *)(*ptr) = size;
     *ptr += sizeof(kiku_str_size_type);
     return *ptr;
